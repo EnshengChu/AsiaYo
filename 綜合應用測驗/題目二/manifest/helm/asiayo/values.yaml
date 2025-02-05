@@ -1,0 +1,80 @@
+ingress-nginx:
+  controller:
+    replicaCount: 3
+    service:
+      type: NodePort
+      nodePorts:
+        http: 30080
+        https: 30443
+        tcp:
+          3306: 30306
+          3307: 30307
+    ingressClassResource:
+      name: asiayo
+      enabled: true
+  tcp: 
+    3306: "asiayo/asiayo-mysql-primary-headless:3306"
+    3307: "asiayo/asiayo-mysql-secondary:3306"
+    
+mysql:
+  # https://ithelp.ithome.com.tw/articles/10336421
+    # custom-mysql-values.yaml
+  volumePermissions:
+    enabled: true
+  # @param global.storageClass Global StorageClass for Persistent Volume(s)
+  global:
+    storageClass: "asiayo-mysql"
+
+  # @param architecture MySQL architecture (`standalone` or `replication`)
+  architecture: replication
+
+  auth:
+    rootPassword: "test1234"
+    createDatabase: true
+    database: "asiayo"
+    
+    # @param auth.username Name for a custom user to create
+    username: "admin"
+    # @param auth.password Password for the new user. Ignored if existing secret is provided
+    password: "admin"
+    
+    # @param auth.replicationUser MySQL replication user
+    replicationUser: replicator
+    # @param auth.replicationPassword MySQL replication user password. Ignored if existing secret is provided
+    replicationPassword: "replicationtest"
+
+  primary:
+    name: primary
+    persistence:
+      enabled: true
+      # @param primary.persistence.storageClass MySQL primary persistent volume storage Class
+      # If defined, storageClassName: <storageClass>
+      # If set to "-", storageClassName: "", which disables dynamic provisioning
+      # If undefined (the default) or set to null, no storageClassName spec is set, choosing the default provisioner.  (gp2 on AWS, standard on GKE, AWS & OpenStack)
+      storageClass: "asiayo-mysql"
+      labels:
+        app: mysql
+      accessModes:
+        - ReadWriteOnce
+      size: 8Gi
+      persistentVolumeReclaimPolicy:
+        enabled: true
+      selector:
+        matchLabels:
+          app: data-asiayo-mysql-primary-0
+
+  secondary:
+    name: secondary
+    replicaCount: 2
+    persistence:
+      enabled: true
+      # @param secondary.persistence.storageClass MySQL secondary persistent volume storage Class
+      # If defined, storageClassName: <storageClass>
+      # If set to "-", storageClassName: "", which disables dynamic provisioning
+      # If undefined (the default) or set to null, no storageClassName spec is set, choosing the default provisioner.  (gp2 on AWS, standard on GKE, AWS & OpenStack)
+      storageClass: "asiayo-mysql"
+      persistentVolumeReclaimPolicy:
+        enabled: true
+      selector:
+        matchLabels:
+          app: data-asiayo-mysql-secondary

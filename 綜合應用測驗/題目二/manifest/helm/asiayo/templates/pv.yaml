@@ -1,0 +1,47 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: data-asiayo-mysql-primary-0
+  labels:
+    app: data-asiayo-mysql-primary-0
+spec:
+  capacity:
+    storage: 8Gi
+  accessModes:
+    - ReadWriteOnce
+  storageClassName: asiayo-mysql
+  persistentVolumeReclaimPolicy: Retain
+  hostPath:
+    path: /mnt/mysql-data
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: data-asiayo-mysql-volume-0
+  labels:
+    app: data-asiayo-mysql-secondary
+spec:
+  capacity:
+    storage: 8Gi
+  accessModes:
+    - ReadWriteOnce
+  storageClassName: asiayo-mysql
+  persistentVolumeReclaimPolicy: Retain
+  hostPath:
+    path: /mnt/mysql-data
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: data-asiayo-mysql-volume-1
+  labels:
+    app: data-asiayo-mysql-secondary
+spec:
+  capacity:
+    storage: 8Gi
+  accessModes:
+    - ReadWriteOnce
+  storageClassName: asiayo-mysql
+  persistentVolumeReclaimPolicy: Retain
+  hostPath:
+    path: /mnt/mysql-data

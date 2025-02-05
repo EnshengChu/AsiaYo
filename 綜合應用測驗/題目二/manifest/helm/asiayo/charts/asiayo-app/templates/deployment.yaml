@@ -1,0 +1,51 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: asiayo-app
+  namespace: asiayo
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: asiayo-app
+  template:
+    metadata:
+      labels:
+        app: asiayo-app
+    spec:
+      priorityClassName: high-priority 
+      containers:
+      - name: asiayo-app
+        image: nginx:latest
+        ports:
+        - containerPort: 80
+        volumeMounts:
+        - mountPath: "/data"
+          name: asiayo-storage
+        - name: nginx-conf
+          mountPath: /etc/nginx/nginx.conf
+          subPath: nginx.conf
+          readOnly: true
+        - name: nginx-conf
+          mountPath: /etc/nginx/virtualhost/virtualhost.conf
+          subPath: virtualhost.conf
+          readOnly: true
+        resources:
+          limits:
+            cpu: "500m"
+            memory: "512Mi"
+          requests:
+            cpu: "250m"
+            memory: "256Mi"
+      volumes:
+      - name: asiayo-storage
+        persistentVolumeClaim:
+          claimName: asiayo-pvc
+      - name: nginx-conf
+        configMap:
+          name: nginx-conf
+          items:
+          - key: nginx.conf
+            path: nginx.conf
+          - key: virtualhost.conf
+            path: virtualhost.conf
