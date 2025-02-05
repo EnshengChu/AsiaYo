@@ -2,7 +2,7 @@
 
 ## K8S Manifest
 
-依照題目要求，我設計了三個 Helm Chart 並將它們部署在我的地端環境，如有後續面試可以展示給各位考官，並subchart 將集成於 Parent Chart 內，以便快速部署。這三個 Helm Chart 如下：
+依照題目要求，我設計了三個 Helm Chart 並將它們部署在我的本地環境。如有後續面試，我可以展示給各位考官。我將這些子 Chart 集成於主 Chart 內，以便快速部署。這三個 Helm Chart 如下：
 
 - **asiayo-app**：一個用於演示高可用應用的 NGINX 服務。
 - **ingress-nginx**：用於管理 Kubernetes 集群中的流量。
