@@ -9,9 +9,12 @@ ingress-nginx:
         tcp:
           3306: 30306
           3307: 30307
+    ingressClass: asiayo
     ingressClassResource:
-      name: asiayo
       enabled: true
+      name: asiayo
+      controllerValue: k8s.io/asiayo
+
   tcp: 
     3306: "asiayo/asiayo-mysql-primary-headless:3306"
     3307: "asiayo/asiayo-mysql-secondary:3306"
