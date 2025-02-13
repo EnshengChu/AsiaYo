@@ -5,6 +5,10 @@ metadata:
   namespace: asiayo
 spec:
   ingressClassName: asiayo
+  tls:
+  - hosts:
+    - asiayo.angusitlab.com
+    secretName: angusitlab-tls
   rules:
   - host: asiayo.angusitlab.com
     http:
