@@ -9,6 +9,6 @@ entries:
     name: asiayo
     type: application
     urls:
-    - https://github.com/EnshengChu/AsiaYo/asiayo-0.1.0.tgz
+    - https://github.com/EnshengChu/AsiaYo/helm-repo/asiayo-0.1.0.tgz
     version: 0.1.0
 generated: "2025-02-14T05:42:26.727445+08:00"
