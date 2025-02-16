@@ -6,3 +6,6 @@ superset:
     primary:
       persistence:
         storageClass: demo-services
+  configOverrides:
+    superset_config.py: |
+      SECRET_KEY = "ds8932ufjojAJFL@#LJF:LAJ"
