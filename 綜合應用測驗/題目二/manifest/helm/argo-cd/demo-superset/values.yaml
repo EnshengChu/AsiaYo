@@ -9,3 +9,5 @@ superset:
   configOverrides:
     superset_config.py: |
       SECRET_KEY = "ds8932ufjojAJFL@#LJF:LAJ"
+    requirements.txt: |
+      psycopg2-binary
