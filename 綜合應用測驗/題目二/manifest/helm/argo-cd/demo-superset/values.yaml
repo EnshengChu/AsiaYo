@@ -4,4 +4,5 @@ superset:
     volumePermissions:
       enabled: true
     primary:
-      storageClass: demo-services
+      persistence:
+        storageClass: demo-services
