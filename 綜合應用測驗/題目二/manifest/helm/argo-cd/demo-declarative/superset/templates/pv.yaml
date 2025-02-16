@@ -13,4 +13,4 @@ spec:
   persistentVolumeReclaimPolicy: Retain
   storageClassName: demo-services
   hostPath:
-    path: "/mnt/data"
+    path: "/bitnami/postgresql/data"
