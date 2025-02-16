@@ -1,5 +1,7 @@
 superset:
   postgresql:
     enabled: true
+    volumePermissions:
+      enabled: true
     primary:
       storageClass: demo-services
