@@ -1,22 +1,22 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: asiayo-ingress
-  namespace: asiayo
+  name: demo-ingress
+  namespace: demo
 spec:
-  ingressClassName: asiayo
+  ingressClassName: demo
   tls:
   - hosts:
-    - asiayo.angusitlab.com
+    - demo.angusitlab.com
     secretName: angusitlab-tls
   rules:
-  - host: asiayo.angusitlab.com
+  - host: demo.angusitlab.com
     http:
       paths:
       - path: /
         pathType: Prefix
         backend:
           service:
-            name: asiayo-service
+            name: demo-service
             port:
               number: 80

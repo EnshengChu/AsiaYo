@@ -1,10 +1,10 @@
 apiVersion: policy/v1
 kind: PodDisruptionBudget
 metadata:
-  name: asiayo-app-pdb
-  namespace: asiayo
+  name: demo-app-pdb
+  namespace: demo
 spec:
   minAvailable: 1
   selector:
     matchLabels:
-      app: asiayo-app
+      app: demo-app

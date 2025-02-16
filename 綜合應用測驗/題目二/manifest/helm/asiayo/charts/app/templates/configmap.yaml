@@ -2,7 +2,7 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: nginx-conf
-  namespace: asiayo
+  namespace: demo
 data:
   nginx.conf: |
     user nginx;
