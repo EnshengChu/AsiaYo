@@ -822,10 +822,10 @@ postgresql:
     persistence:
       ##
       ## Enable PostgreSQL persistence using Persistent Volume Claims.
-      enabled: false
+      enabled: true
       ##
       ## Persistent class
-      # storageClass: classname
+      storageClass: demo-services
       ##
       ## Access modes:
       accessModes:
