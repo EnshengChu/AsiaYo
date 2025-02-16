@@ -1,0 +1,14 @@
+apiVersion: v1
+entries:
+  angusitlab-demo:
+  - apiVersion: v2
+    appVersion: 0.1.0
+    created: "2025-02-16T23:19:32.203698+08:00"
+    description: A Helm chart for Kubernetes
+    digest: 5d35ab4b8f1bfb13937b2390d4a4c9e59679d34af219ec18982f2a7ab47208f1
+    name: angusitlab-demo
+    type: application
+    urls:
+    - angusitlab-demo-0.1.0.tgz
+    version: 0.1.0
+generated: "2025-02-16T23:19:32.19424+08:00"
