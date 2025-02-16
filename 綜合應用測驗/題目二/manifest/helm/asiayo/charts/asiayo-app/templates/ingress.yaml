@@ -1,16 +1,16 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: asiayo-ingress
+  name: asiayo-ingress-1
   namespace: asiayo
 spec:
   ingressClassName: asiayo
   tls:
   - hosts:
-    - asiayo.angusitlab.com
+    - asiayo-1.angusitlab.com
     secretName: angusitlab-tls
   rules:
-  - host: asiayo.angusitlab.com
+  - host: asiayo-1.angusitlab.com
     http:
       paths:
       - path: /
