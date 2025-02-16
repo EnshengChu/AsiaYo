@@ -10,3 +10,6 @@ spec:
     requests:
       storage: 10Gi
   storageClassName: asiayo-services
+  selector:
+    matchLabels:
+      pv-name: asiayo-pv-1

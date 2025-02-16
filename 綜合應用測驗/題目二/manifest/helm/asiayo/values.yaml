@@ -64,7 +64,7 @@ mysql:
         enabled: true
       selector:
         matchLabels:
-          app: data-asiayo-mysql-primary-0
+          app: data-asiayo1-mysql-primary-0
 
   secondary:
     name: secondary
@@ -80,4 +80,4 @@ mysql:
         enabled: true
       selector:
         matchLabels:
-          app: data-asiayo-mysql-secondary
+          app: data-asiayo1-mysql-secondary
