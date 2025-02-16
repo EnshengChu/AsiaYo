@@ -1,5 +1,5 @@
 superset:
   postgresql:
     enabled: true
-  primary:
-    storageClass: demo-services
+    primary:
+      storageClass: demo-services
