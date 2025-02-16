@@ -814,6 +814,11 @@ postgresql:
   image:
     tag: "14.6.0-debian-11-r13"
 
+  ## @param volumePermissions.enabled Enable init container that changes the owner and group of the persistent volume
+  volumePermissions:
+    enabled: true
+
+
   ## PostgreSQL Primary parameters
   primary:
     ##
@@ -825,7 +830,7 @@ postgresql:
       enabled: true
       ##
       ## Persistent class
-      storageClass: demo-services
+      # storageClass: classname
       ##
       ## Access modes:
       accessModes:
