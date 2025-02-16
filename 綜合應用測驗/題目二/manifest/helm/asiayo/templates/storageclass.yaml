@@ -1,13 +1,13 @@
 apiVersion: storage.k8s.io/v1
 kind: StorageClass
 metadata:
-  name: asiayo-mysql
+  name: demo-mysql
 provisioner: kubernetes.io/no-provisioner
 volumeBindingMode: WaitForFirstConsumer
 ---
 apiVersion: storage.k8s.io/v1
 kind: StorageClass
 metadata:
-  name: asiayo-services
+  name: demo-services
 provisioner: kubernetes.io/no-provisioner
 volumeBindingMode: WaitForFirstConsumer

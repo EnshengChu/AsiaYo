@@ -9,15 +9,15 @@ ingress-nginx:
         tcp:
           3306: 30306
           3307: 30307
-    ingressClass: asiayo
+    ingressClass: demo
     ingressClassResource:
       enabled: true
-      name: asiayo
-      controllerValue: k8s.io/asiayo
+      name: demo
+      controllerValue: k8s.io/demo
 
   tcp: 
-    3306: "asiayo/asiayo-mysql-primary-headless:3306"
-    3307: "asiayo/asiayo-mysql-secondary:3306"
+    3306: "demo/demo-mysql-primary-headless:3306"
+    3307: "demo/demo-mysql-secondary:3306"
     
 mysql:
   # https://ithelp.ithome.com.tw/articles/10336421
@@ -26,7 +26,7 @@ mysql:
     enabled: true
   # @param global.storageClass Global StorageClass for Persistent Volume(s)
   global:
-    storageClass: "asiayo-mysql"
+    storageClass: "demo-mysql"
 
   # @param architecture MySQL architecture (`standalone` or `replication`)
   architecture: replication
@@ -34,7 +34,7 @@ mysql:
   auth:
     rootPassword: "test1234"
     createDatabase: true
-    database: "asiayo"
+    database: "demo"
     
     # @param auth.username Name for a custom user to create
     username: "admin"
@@ -54,7 +54,7 @@ mysql:
       # If defined, storageClassName: <storageClass>
       # If set to "-", storageClassName: "", which disables dynamic provisioning
       # If undefined (the default) or set to null, no storageClassName spec is set, choosing the default provisioner.  (gp2 on AWS, standard on GKE, AWS & OpenStack)
-      storageClass: "asiayo-mysql"
+      storageClass: "demo-mysql"
       labels:
         app: mysql
       accessModes:
@@ -64,7 +64,7 @@ mysql:
         enabled: true
       selector:
         matchLabels:
-          app: data-asiayo-mysql-primary-0
+          app: data-demo-mysql-primary-0
 
   secondary:
     name: secondary
@@ -75,9 +75,9 @@ mysql:
       # If defined, storageClassName: <storageClass>
       # If set to "-", storageClassName: "", which disables dynamic provisioning
       # If undefined (the default) or set to null, no storageClassName spec is set, choosing the default provisioner.  (gp2 on AWS, standard on GKE, AWS & OpenStack)
-      storageClass: "asiayo-mysql"
+      storageClass: "demo-mysql"
       persistentVolumeReclaimPolicy:
         enabled: true
       selector:
         matchLabels:
-          app: data-asiayo-mysql-secondary
+          app: data-demo-mysql-secondary
